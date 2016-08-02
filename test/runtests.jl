@@ -459,4 +459,7 @@ end
 
 end
 
+# more tests from files
+include("mdflatten.jl")
+
 include(joinpath(dirname(@__FILE__), "..", "docs", "make.jl"))
