@@ -253,6 +253,9 @@ function deploydocs(;
     ssh_key_file = abspath(joinpath(root, ".documenter.enc"))
     has_ssh_key  = isfile(ssh_key_file)
 
+    Utilities.debug("Test test test")
+    Utilities.debug("has_ssh_key: $has_ssh_key")
+
     # When should a deploy be attempted?
     should_deploy =
         contains(repo, travis_repo_slug) &&
