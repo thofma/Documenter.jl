@@ -263,11 +263,11 @@ function deploydocs(;
             has_ssh_key
         ) &&
         travis_osname == osname &&
-        travis_julia  == julia  &&
-        (
-            travis_branch == latest ||
-            travis_tag    != ""
-        )
+        travis_julia  == julia  #&&
+        #(
+        #    travis_branch == latest ||
+        #    travis_tag    != ""
+        #)
 
     if get(ENV, "DOCUMENTER_DEBUG", "") == "true"
         Utilities.debug("TRAVIS_REPO_SLUG       = \"$travis_repo_slug\"")
