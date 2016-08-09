@@ -253,24 +253,21 @@ function deploydocs(;
     ssh_key_file = abspath(joinpath(root, ".documenter.enc"))
     has_ssh_key  = isfile(ssh_key_file)
 
-    Utilities.debug("Test test test")
-    Utilities.debug("has_ssh_key: $has_ssh_key")
-
     # When should a deploy be attempted?
-    should_deploy = true
-        #contains(repo, travis_repo_slug) &&
-        #travis_pull_request == "false"   &&
-        #(
-        #    # Support token and ssh key deployments.
-        #    github_api_key != "" ||
-        #    has_ssh_key
-        #) &&
-        #travis_osname == osname &&
-        #travis_julia  == julia  #&&
-        #(
-        #    travis_branch == latest ||
-        #    travis_tag    != ""
-        #)
+    should_deploy =
+        contains(repo, travis_repo_slug) &&
+        travis_pull_request == "false"   &&
+        (
+            # Support token and ssh key deployments.
+            github_api_key != "" ||
+            has_ssh_key
+        ) &&
+        travis_osname == osname &&
+        travis_julia  == julia  &&
+        (
+            travis_branch == latest ||
+            travis_tag    != ""
+        )
 
     if get(ENV, "DOCUMENTER_DEBUG", "") == "true"
         Utilities.debug("TRAVIS_REPO_SLUG       = \"$travis_repo_slug\"")
