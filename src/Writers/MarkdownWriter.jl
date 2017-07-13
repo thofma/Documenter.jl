@@ -66,7 +66,7 @@ function render(io::IO, mime::MIME"text/plain", node::Documents.DocsNode, page, 
     # Docstring header based on the name of the binding and it's category.
     anchor = "<a id='$(node.anchor.id)' href='#$(node.anchor.id)'>#</a>"
     header = "**`$(node.object.binding)`** &mdash; *$(Utilities.doccat(node.object))*."
-    println(io, anchor, "\n", header, "\n\n")
+    # println(io, anchor, "\n", header, "\n\n")
     # Body. May contain several concatenated docstrings.
     renderdoc(io, mime, node.docstr, page, doc)
 end
