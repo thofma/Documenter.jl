@@ -518,7 +518,7 @@ function Selectors.runner(::Type{REPLBlocks}, x, page, doc)
             println(out, output, "\n")
         end
     end
-    page.mapping[x] = Base.Markdown.Code("julia-repl", rstrip(Utilities.takebuf_str(out)))
+    page.mapping[x] = Base.Markdown.Code("julia", rstrip(Utilities.takebuf_str(out)))
 end
 
 # @setup
