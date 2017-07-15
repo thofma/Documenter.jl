@@ -79,11 +79,11 @@ function renderdoc(io::IO, mime::MIME"text/plain", md::Markdown.MD, page, doc)
         for (markdown, result) in zip(md.content, md.meta[:results])
             render(io, mime, dropheaders(markdown), page, doc)
             # When a source link is available then print the link.
-            url = Utilities.url(doc.internal.remote, doc.user.repo, result)
-            if url !== nothing
-                link = "<a target='_blank' href='$url' class='documenter-source'>source</a><br>"
-                println(io, "\n", link, "\n")
-            end
+            # No, don't do this
+            #Utilities.unwrap(Utilities.url(doc.internal.remote, doc.user.repo, result)) do url
+            #    link = "<a target='_blank' href='$url' class='documenter-source'>source</a><br>"
+            #    println(io, "\n", link, "\n")
+            #end
         end
     else
         # Docstrings with no `:results` metadata won't contain source locations so we don't
